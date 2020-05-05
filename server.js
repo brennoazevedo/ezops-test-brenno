@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-var dbUrl = 'mongodb://brenno:2xBLu362rYEV9ldK@cluster0-shard-00-00-c39y2.mongodb.net:27017,cluster0-shard-00-01-c39y2.mongodb.net:27017,cluster0-shard-00-02-c39y2.mongodb.net:27017/simple-chat?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
+require('dotenv').config();
+var api_key = process.env.API_KEY;
+var api_user = process.env.API_USER;
+var dbUrl = `mongodb://${api_user}:${api_key}@cluster0-shard-00-00-c39y2.mongodb.net:27017,cluster0-shard-00-01-c39y2.mongodb.net:27017,cluster0-shard-00-02-c39y2.mongodb.net:27017/simple-chat?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority`
 var Message = mongoose.model('Message', {name : String, message : String});
 app.use(express.static(__dirname));
 var bodyParser = require('body-parser');
