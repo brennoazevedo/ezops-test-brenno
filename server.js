@@ -29,6 +29,9 @@ app.get('/messages/:user', (req, res) => {
   })
 })
 
+app.post('/messages_away', (req, res) =>{
+    io.emit('awayMessage', req.body);
+})
 
 app.post('/messages', async (req, res) => {
   try{
@@ -55,7 +58,6 @@ app.post('/messages', async (req, res) => {
 })
 
 
-
 io.on('connection', () =>{
   console.log('a user is connected')
 })
@@ -64,6 +66,6 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true },(err
   console.log('mongodb connected',err);
 })
 
-var server = http.listen(3000, () => {
+var server = http.listen(3001, () => {
   console.log('server is running on port', server.address().port);
 });
