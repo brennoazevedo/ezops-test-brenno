@@ -53,7 +53,7 @@
     function addMessages(message){
           $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
           if (document.getElementById('away').checked){
-	        $.post('http://3.82.100.51:3001/messages_away', {name: name, message: "I'm away from the keyboard!"});
+	        $.post('http://3.82.100.51:3000/messages_away', {name: name, message: "I'm away from the keyboard!"});
 	}		
 	
     }
@@ -64,13 +64,13 @@
 
 
     function getMessages(){
-      $.get('http://3.82.100.51:3001/messages', (data) => {
+      $.get('http://3.82.100.51:3000/messages', (data) => {
         data.forEach(addMessages);
       })
     }
 
     function sendMessage(message){
-       $.post('http://3.82.100.51:3001/messages', message)
+       $.post('http://3.82.100.51:3000/messages', message)
     }
 	
 </script>
