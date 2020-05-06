@@ -1,4 +1,4 @@
-FROM node:latest
+FROM brennoa/ezops:latest
 MAINTAINER Brenno
 COPY . /var/www
 WORKDIR /var/www
